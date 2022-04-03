@@ -18,4 +18,5 @@ RUN dotnet publish "SzopAPI.csproj" -c Release -o /app/publish /p:UseAppHost=fal
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+COPY ["Data/.", "./Data/"]
 ENTRYPOINT ["dotnet", "SzopAPI.dll"]
